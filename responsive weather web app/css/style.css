@@ -1,0 +1,64 @@
+*body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+}
+/* .weather-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: #fff;
+    text-align: center;
+} */
+.country-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: #fff;
+    text-align: center;
+}
+.weather-details{
+    text-align: right;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(167, 36, 36, 0.8);
+}
+.weather-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border:2px solid #000;
+    border-radius: 10px;
+    /* margin-left: 2px; */
+}
+.five-daysweather{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content:space-between;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    /* margin-left: 40px; */
+    border:2px solid #807c7c;
+    border-radius: 10px;
+}
+.five-day-display{
+    
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(95, 92, 92, 0.8);
+    border-radius: 10px;
+    width: 100%;
+    color: #181616;
+
+}
