@@ -1,4 +1,4 @@
-
+// const cityInput = document.querySelector("#city");
 const searchButton = document.querySelector("#search-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const daysForecastDiv = document.querySelector(".days-forecast");
@@ -14,22 +14,22 @@ async function fetchCountries() {
       
       const response = await fetch('https://restcountries.com/v3.1/all');
       const countries = await response.json();
-      countriesData = countries; 
+      countriesData = countries; // Store countries data for later use
 
       const countrySelect = document.getElementById('country-selection');
       countrySelect.innerHTML = '<option value="">Select a country</option>';
 
-      countries.sort((a, b) => a.name.common.localeCompare(b.name.common)); 
+      countries.sort((a, b) => a.name.common.localeCompare(b.name.common)); // Sort countries alphabetically
       countries.forEach(country => {
         const option = document.createElement('option');
-        option.value = country.cca2; 
-        option.textContent = country.name.common; 
+        option.value = country.cca2; // Country code (e.g., US, IN, etc.)
+        option.textContent = country.name.common; // Country name
     
         countrySelect.appendChild(option);
       });
       console.log('countries loaded',countriesData);
       
-      
+      // Add event listener to fetch cities when a country is selected
       countrySelect.addEventListener('change', fetchCities);
     } catch (error) {
       console.error('Error fetching countries:', error);
@@ -37,10 +37,10 @@ async function fetchCountries() {
     }
   }
 
-  
+  // Fetch cities for the selected country using GeoNames API
   async function fetchCities() {
 
-    
+    // document.getElementById('weatherdescription').innerHTML =' '
     const country = document.getElementById('country-selection').value;
 
     const citySelect = document.getElementById('city');
@@ -57,14 +57,17 @@ async function fetchCountries() {
     }
     console.log('country selected from the select option:',country);
     
-    
+    // citySelect.disabled = false
+    // Find the selected country's data
     const selectedCountry = countriesData.find(c => c.cca2 === country);
-    
+    // what does c.cca2 mean?
+    // cca2 is the country code of the country. it i used to uniquely identify the country.
+    //cca2 is a property of the country object which is used to uniquely identify the country.
+  
     console.log('selected country same like city coordinates :-',selectedCountry);
-
     if (selectedCountry) {
-     
-      const countryName = selectedCountry.name.common;
+      // Display the selected country data
+      
       const capital = selectedCountry.capital
       const border_country = selectedCountry.borders;
       const continent = selectedCountry.continents;
@@ -83,15 +86,15 @@ async function fetchCountries() {
 
       }
       for (const currencyCode in country_currency) {
-        console.log('Currency name of selected country:', country_currency[currencyCode].name);
+        console.log('Currency name of selected country:', country_currency[currencyCode]);
         console.log('Currency symbol of selected country:', country_currency[currencyCode].symbol);
-        counCurr = country_currency[currencyCode].name
+        counCurr = country_currency[currencyCode]
 
       }
 
       const divelement = document.getElementById('data-country').innerHTML =`    
   <h3 class="fw-bold">Country Data</h3>
-            <h6 class="my-3 mt-3">Country Name: <span id="country-name">${countryName}</span></h6>
+            <h6 class="my-3 mt-3">Country Name: <span id="country-name">${selectedCountry}</span></h6>
             <h6 class="my-3">Capital: <span id="country-capital">${capital}</span></h6>
             <h6 class="my-3">Region: <span id="country-region">region</span></h6>
             <h6 class="my-3">Subregion: <span id="country-subregion">subregion</span></h6>
