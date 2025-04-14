@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      //SORTING - Arrange the data in some format
+
+      //1.Bubble sort
+        //step 1:comapre the first two element/data inside array
+        //step 2:if my first ele/data is greater than second ele/data in array
+        //step 3:Then swap the element(exhchange the postion)
+        //step 4: move to next pair n repeat the process
+
+        // function bubblesort(arr){
+            
+        //     let n = arr.length;  //Total no of data
+        //     let swapped
+
+        //     do{
+        //         //It will run or execute the cod at least one time
+        //         swapped=false;
+        //         //For loop to travel inside array
+        //         for(i=0;i<n-1;i++){
+
+        //             if(arr[i]>arr[i+1]){
+
+        //              let temp = arr[i];
+        //              arr[i] = arr[i+1];
+        //              arr[i+1]=temp;
+        //              swapped = true;
+
+        //             }
+        //         }
+
+        //     }while(swapped){
+        //         return arr;
+        //     }
+
+
+        // }
+
+        // console.log(bubblesort([9,4,7,15,8,2,30,5,10]))
+
+
+        //WHATSAPP CONTACT SORT EXAMPLE:
+        //A-Z ---> localeComapre --> ASCII VALUE(intergers)
+
+        function sortContact(contacts){
+            return contacts.sort( (a,b)=>a.name.localeCompare(b.name))
+        }
+
+        let contacts = [
+            {name:"Isha", lastMessage:"yes sir"},
+            {name:"Arpit", lastMessage:"yes"},
+            {name:"Vikram", lastMessage:"yes sir"},
+            {name:"Chandana", lastMessage:"yes"},
+            {name:"Abhi", lastMessage:"hii"},
+            {name:"Aaaaleexxxxx", lastMessage:"yes"},
+            {name:"Aazhe", lastMessage:"yes"},
+        ]
+
+        console.log(sortContact(contacts))
+    
+     
+
+
+        </script>
+</body>
+</html>
