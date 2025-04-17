@@ -39,16 +39,10 @@ async function fetchCountries() {
 
   
   async function fetchCities() {
-
-    
     const country = document.getElementById('country-selection').value;
-
     const citySelect = document.getElementById('city');
     console.log('selected html element for city is :-',citySelect);
-    
-    
     console.log('country selected:',country);
-
     
     if (!country) {
       citySelect.innerHTML = '<option value="">Select a country first</option>';
@@ -56,7 +50,6 @@ async function fetchCountries() {
       return;
     }
     console.log('country selected from the select option:',country);
-    
     
     const selectedCountry = countriesData.find(c => c.cca2 === country);
     
@@ -73,7 +66,14 @@ async function fetchCountries() {
       const flag_src = selectedCountry.flags.png;
       const pop_in_mil = selectedCountry.population;
       const population = pop_in_mil/1000000;
-      console.log('flag of the country',flag_src)
+      const latitude = selectedCountry.latlng[0];
+      const longitude = selectedCountry.latlng[1];
+      const timezones = selectedCountry.timezones;
+      console.log('latitude of the country:',latitude);
+      console.log('flag of the country',flag_src);
+      const  iid=selectedCountry.idd.root;
+      const iid2=selectedCountry.idd.suffixes;
+      console.log('country code of the selected country:',iid+iid2);
       const country_currency = selectedCountry.currencies;
       let counLang =[];
       let counCurr =[];
@@ -93,14 +93,14 @@ async function fetchCountries() {
   <h3 class="fw-bold">Country Data</h3>
             <h6 class="my-3 mt-3">Country Name: <span id="country-name">${countryName}</span></h6>
             <h6 class="my-3">Capital: <span id="country-capital">${capital}</span></h6>
-            <h6 class="my-3">Region: <span id="country-region">region</span></h6>
-            <h6 class="my-3">Subregion: <span id="country-subregion">subregion</span></h6>
+            <h6 class="my-3">Region: <span id="country-region">${continent}</span></h6>
             <h6 class="my-3">Population: <span id="country-population">${population}</span></h6>
-            <h6 class="my-3">Area: <span id="country-area"></span>area</h6>
+            <h6 class="my-3">Border Country: <span id="country-area"></span>${border_country}</h6>
             <h6 class="my-3">Languages: <span id="country-languages">${counLang}</span></h6>
             <h6 class="my-3">Currencies: <span id="country-currencies">${counCurr}</span></h6>
-            <h6 class="my-3">Timezones: <span id="country-timezones"></span></h6>
+            <h6 class="my-3">Timezones: <span id="country-timezones">${timezones}</span></h6>
             <h6 class="my-3">Lat/Lng: <span id="country-latlng">${latitude}/${longitude}</span></h6>
+            <h6 class="my-3">Car Driving Side: <span id="country-subregion">${car_drive_side}</span></h6>
             <h6 class="my-3">Country Code: <span id="country-code"></span></h6>
             <h6 class="my-3">Country Flag: <img src ="${flag_src}" alt ="country flag"></h6>
              `
